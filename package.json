@@ -4,7 +4,7 @@
   "description": "A service to capture a picture on a pi",
   "author": "Andrew Jack",
   "scripts": {
-    "start": "babel-node src/index.js"
+    "start": "babel-node src/server.js"
   },
   "dependencies": {
     "firebase": "^3.0.3",

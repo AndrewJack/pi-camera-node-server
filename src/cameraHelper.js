@@ -1,30 +1,28 @@
 import RaspiCam from 'raspicam';
 import moment from 'moment';
 
-export function buildCamera(opts) {
+export function buildCamera(opts, onRead) {
   const camera = new RaspiCam(opts);
 
   // doing single photo
-  camera.on('exit', function () {
+  camera.on('exit', () => {
     console.log('camera exit photo', moment().format());
-    res.json({
-      filename: opts.output
-    });
   });
 
-  camera.on('start', function () {
+  camera.on('start', () => {
     console.log('camera start', moment().format());
   });
 
-  camera.on('stop', function () {
+  camera.on('stop', () => {
     console.log('camera stop ', moment().format());
   });
 
-  camera.on('read', function (err, timestamp, filename) {
+  camera.on('read', (err, timestamp, filename) => {
     console.log('camera read ', moment().format(), filename);
+    onRead(err, timestamp, filename);
   });
 
-  camera.on('error', function (er) {
+  camera.on('error', (er) => {
     console.error(er.stack);
   });
 
