@@ -1,0 +1,23 @@
+{
+  "name": "pi-camera-server",
+  "version": "0.1.0",
+  "description": "A service to capture a picture on a pi",
+  "author": "Andrew Jack",
+  "scripts": {
+    "start": "babel-node index.js"
+  },
+  "dependencies": {
+    "firebase": "^3.0.3",
+    "raspicam": "^0.2.13"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.11.0"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
+  }
+}
