@@ -1,7 +1,7 @@
 import RaspiCam from 'raspicam';
 import moment from 'moment';
 
-export function buildCamera(opts, onRead) {
+export default function buildCamera(opts, onRead) {
   const camera = new RaspiCam(opts);
 
   // doing single photo

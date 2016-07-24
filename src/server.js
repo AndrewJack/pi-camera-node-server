@@ -1,7 +1,6 @@
 import http from 'http';
 import moment from 'moment';
-import { buildCamera } from './cameraHelper'
-import { setupFirebase, uploadFile } from './firebaseHelper';
+import buildCamera from './cameraHelper';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -10,20 +9,20 @@ const port = 3000;
 // setupFirebase('https://firebaseurl.com');
 
 // Initialize camera
-let opts = {
+const opts = {
   mode: 'photo',
-  encoding: 'jpg'
-}
-const server = http.createServer((req, res) => {
+  encoding: 'jpg',
+};
 
+const server = http.createServer((req, res) => {
   // Take picture
-  opts.output = './captures/' + moment().format() + '.jpg';
+  opts.output = `./captures/${moment().format()}.jpg`;
   const camera = buildCamera(opts, (err, timestamp, fileName) => {
-    console.log('picture captured' + fileName);
+    console.log(`picture captured ${fileName}`);
   });
   camera.start();
 
-  res.statusCode = 200;
+  res.statusCode = 200; // eslint-disable-line no-param-reassign
   res.setHeader('Content-Type', 'text/plain');
   res.end('Hello From a PI\n');
 });
