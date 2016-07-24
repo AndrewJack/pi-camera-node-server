@@ -25,6 +25,7 @@ const server = http.createServer((req, res) => {
   res.end('Hello From a PI\n');
 });
 
-server.listen(config.get('port'), config.get('host'), () => {
-  console.log(`Server running at http://${config.get('host')}:${config.get('port')}/`);
+console.log(`Server will run at http://${config.host}:${config.port}/`);
+server.listen(config.port, config.host, () => {
+  console.log(`Server running at http://${config.host}:${config.port}/`);
 });
