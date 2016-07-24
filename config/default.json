@@ -4,7 +4,7 @@
     "port": 3000
   },
   "firebase": {
-    "serviceAccount": "path/to/serviceAccountCredentials.json",
+    "keyFilename": "path/to/serviceAccountCredentials.json",
     "storageBucket": "gs://<app-name>.appspot.com",
     "projectId": "app-name"
   }
