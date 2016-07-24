@@ -7,9 +7,9 @@ const gcs = gcloud.storage({
   projectId: conf.get('firebase:projectId'),
   keyFilename: conf.get('firebase:keyFilename'),
 });
-const bucket = gcs.bucket(conf.get('firebase:storageBucket'));
 
 export default function uploadFile(fileName) {
+  const bucket = gcs.bucket(conf.get('firebase:storageBucket'));
   bucket.upload(`captures/${fileName.replace('~', '')}`, (err, file) => {
     if (!err) {
       console.log(`File saved as ${file}`);
