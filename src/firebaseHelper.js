@@ -1,5 +1,3 @@
-// TODO: WIP
-/* eslint-disable no-console */
 import gcloud from 'gcloud';
 import conf from './config';
 
