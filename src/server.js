@@ -1,9 +1,7 @@
 import http from 'http';
 import moment from 'moment';
 import buildCamera from './cameraHelper';
-
-const hostname = '127.0.0.1';
-const port = 3000;
+import config from './config';
 
 // Initialize firebase
 // setupFirebase('https://firebaseurl.com');
@@ -27,6 +25,6 @@ const server = http.createServer((req, res) => {
   res.end('Hello From a PI\n');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(config.get('port'), config.get('host'), () => {
+  console.log(`Server running at http://${config.get('host')}:${config.get('port')}/`);
 });
