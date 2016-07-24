@@ -12,7 +12,8 @@ export default function uploadFile(fileName) {
   const bucket = gcs.bucket(conf.get('firebase:storageBucket'));
   bucket.upload(`captures/${fileName.replace('~', '')}`, (err, file) => {
     if (!err) {
-      console.log(`File saved as ${file}`);
+      console.log('File saved');
+      console.log(file);
     } else {
       console.warn(`Error: ${err}`);
     }
