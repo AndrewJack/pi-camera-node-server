@@ -1,23 +1,23 @@
 import http from 'http';
-import moment from 'moment';
+import uuid from 'uuid';
 import buildCamera from './cameraHelper';
 import config from './config';
+import uploadFile from './firebaseHelper';
 
-// Initialize firebase
-// setupFirebase('https://firebaseurl.com');
-
-// Initialize camera
 const opts = {
   mode: 'photo',
   encoding: 'jpg',
 };
 
+function onPictureCaptured(err, timestamp, fileName) {
+  console.log(`picture captured ${fileName}`);
+  uploadFile(fileName);
+}
+
 const server = http.createServer((req, res) => {
   // Take picture
-  opts.output = `./captures/${moment().format()}.jpg`;
-  const camera = buildCamera(opts, (err, timestamp, fileName) => {
-    console.log(`picture captured ${fileName}`);
-  });
+  opts.output = `./captures/${uuid.v4()}.jpg`;
+  const camera = buildCamera(opts, onPictureCaptured);
   camera.start();
 
   res.statusCode = 200; // eslint-disable-line no-param-reassign
@@ -25,8 +25,8 @@ const server = http.createServer((req, res) => {
   res.end('Hello From a PI\n');
 });
 
-const host = config.get('host');
-const port = config.get('port');
+const host = config.get('server:host');
+const port = config.get('server:port');
 server.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
 });

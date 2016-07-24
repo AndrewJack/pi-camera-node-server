@@ -9,10 +9,11 @@
     "lint": "eslint src/*js"
   },
   "dependencies": {
-    "firebase": "^3.0.3",
+    "gcloud": "^0.37.0",
     "moment": "^2.13.0",
     "nconf": "^0.8.4",
-    "raspicam": "^0.2.13"
+    "raspicam": "^0.2.13",
+    "uuid": "^2.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
